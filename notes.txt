@@ -1,0 +1,170 @@
+
+1. static method can only access static variables
+2. non static methods can access static methods,static variables, non static methods and variabes.
+
+instance members ---> instance variables and instance methods of an object. cam only be invoked through an object reference.
+instance variable----> allocated when an object is created
+instnce method----> method belongs to an object. objecs of same class share itts implementation
+static member---> static variables and methods
+
+Structure of memory
+stack ----> local variables
+heap ----> dynamically allocated variables
+data ----> static and global variables
+code section
+
+while passing primitive data types a copy of the variable is created on stack.
+wile passing parameters the references are passed as vaiables
+
+super must be the first statement in the sub class's constructor.every constructof must invoke the constructor of superclass.
+if constructor is not invoked explicitly, super class uses its default constructor.if defualt constructor is not there , 
+compiler complains.
+
+same method name but different implementation is polymorphism.
+same method name but differentt sign. is overloading. signature doesnt include return type. SIGNATUE includes no of 
+parameters, sequence of parameters and type of parameters.
+
+static polyorphism is called overloading.dynamic polymorphism is called method overriding.
+Upcasting of child class object to Parent class is possible but downcasting of parent class object to child class isn't possible.
+ 
+Car extends Vehicle
+Vehicle v  = new Car(); //implicit casting or right upcasting
+Car c = v; //gives compile time error"type mismatch", downcasint required
+
+literal strings are anoonymous objects of string class. string class in java.lang package. string objects are immutable.
+advantage of immutability:- uses less memory. disadvantage of immutabiity:- less efficient. an empty string has length 0.
+but an uninitialized string is null. 
+no argument constructor creates empty string. copy constructor creates copy of an existing string.
+char charAt(i) gives character at ith position. name.substring(2,5)  name.substring(2) 
+string.indexOf('E') gives index of character, .equals() and .equalsIgnoreCase(), compareTo() returns int value  word1-word2
+
+word1.compareToIgnoreCase(word2) returns 0 if both are same strimngs. str1.replace(oldch,newch)
+exceptio n ARE of java.lang.Excei
+
+Iterable -> Collection <- List , quueue and set
+list -> arrayList, LinkedList, Vector->Stack. Queue ->priority queue, dequeue
+arraylist & linked list oth implement list inteface, both r non synch classes. linked list is faster than arraylist as it uses 
+doubly linked list so no bitshifting is req
+
+arraylist uses dynamic array to store the elements.. arraylist internally uses array so bit shiftind is done when an element
+is removed.
+colection is sometimes called container.
+linked list can act as a list & queuue both as it implements both lit & deque interfaces..
+Arraylist is better for storing elements and linked list is better for manipulating & accessing data.
+
+vector is synchronized in multi threaded environment.vector increments 100% means double the array size if total no of 
+elements xceeds its capacity. Vector is legacy class.vector uses enumreration interface to traverse. it can use itertor also.
+it holds other threads in runnable or non runnable state until the current thread completes execution.
+
+Applet is an application designed to be transmitted overa network & executed by a java compatible browser.
+object -> component -> container -> panek -Applet
+
+applet is an html file, has applet context, no main(), extend applet class, init(), flow layout, no titles, access restrictions.
+
+applet life cycle:- init)(,start(),stop(), destroy(), paint(Graphics g)
+
+init() is called only once, automatically invoked when java launches applet for the first time. functionality:- creating applet's gui.reaing values 
+from <param> tags
+start() invoked after init() and invoked again sent to applet 
+stop() automaticaly invoked whenever user moves off the page wheer applet resides
+destroy() invoked when browser no lnger needs the applet.during destroy(), applet releases unused memory.
+
+database: structured, self describing collection of data.
+databse manager: controls access to db. Authentcation, enforce permissions, data integrity and access services
+
+select version().current_date;
+select si(pi()/4); select (4+1)*5;select version(); select now();
+create database mydb; create table emp(id int,name varchar(40),salary double);
+desc emp;alter table addd primary key(id);
+insert into employee values(101,'Tanish',100000);drop table employee; truncate employee;
+
+LOAD DATA LOCAL INFILE 'C:\\Users\\admin\\Desktop\\emp.txt' INTO TABLE emp; to copy data from a text file into a mysql database
+
+update emp set salary=0 where salary is null;
+select * from emp where name LIKE 'T%';
+select * from emp where name NOT LIKE 'T%';
+select * from emp where salary in(10000,30000);
+select * from emp where salary between 20000 and 50000; create table Persons1(P_Id int not null,lastname varchar(255firstname varchar(255),address varchar(255),city varchar(255),unique(p_id));
+create table Persons1(P_Id int not null,lastname varchar(255),firstname varchar(255),address varchar(255),city varchar(255),constraint p_pk primary key(p_id));
+create table dept(deptid int primary key,deptname varchar(40),deptlocation varchar(40));
+create table capcoemp(empid int primary key,empname varchar(40),salary double,designation varchar(40),deptid int,constraint dept_fk foreign key(deptid) references dept(deptid));
+
+a view is lke a virtual table in which contents are from a base table.
+
+4 types of relations btw classes- dependancy, aggregation, association and composition.
+
+AOP stands for aspect oriented programming, IOC - inversion of controls
+spring is a light weight container that is loosely coupled. components are widely reusable and seperately packaged. created by rod johnson. current version 4.
+
+spring is in much demansd becpz simplicity,testability and loose coupling.(loose association).
+spring is largely built around ioc & aop.
+BeanFactory is core to spring framework. lightweight container that loads bean definitions and manages your beans.
+IOC:- dependency injection: dependencies are injected by container during runtime; beans define thru;
+2 types of IOC containers: BeanFactory and ApplicationContext.
+
+org.springframework.beans.BeanFactory and the org.springframework.context.ApplicationContext.ApplicationContext interface acts as ioc container. AC interface is built on top
+of BF interface.
+
+xmlbeanfactory is implementation of beanfactory interface.to use beanfactory we need to create instance of xmlbeanfactory.
+
+2 WAYS TO inject dependancy: by constructor,bt setter method
+Injection thru constructor. <constructor-arg> subelement 
+
+Autowiring in Spring: this feature enables to inject the object dependency implicitly. it internally uses setter or constructor injection. autowiring can't be used to 
+inject primitive and string values.wrks with reference only. Requires less code as we dont need to write the code to inject the dependency expplicitly.
+disadvanteages: no control of pogrammer.
+
+Modes of Autowiring:-
+1. no - default mode. it means no autowiring by default.
+2. byName - this mode injects the object dependency acc to name of bean. property name and bean name must be same.internally calls setter method.
+3. byType - injects object dependency acc to type.property name and bean name must be same. internally calls setter method.
+4. constructor - injcts the dependency by calling the constructor of class. calls constructor having large no of parameters.
+5. autodetect - deprecated since spring3.
+
+Annotation based configuration:- it is possible to configure dependency injection using annotations. annotations override xml.
+<xmlns..>
+<context:annotation-config/><bean definitions..>
+
+@Required - applies to bean property setter method. indicated that the affected bean property... gives beanInitialization Exception.
+@Autowired - apply to bean property setter method, non setter methods , constructor and properties.this is written to get rid of property tags in xml.
+@Qualifier - this annotation alongwith autowired can be used to remove the confusion which exact bean to wire.
+
+SPRING WEB MVC framework provides model-view-controller architecture and ready components that can be used 
+
+two types of services- SOAP and RESTful services. @PathParam is 
+mavwwn is a software management and comprehension tool based on the concept of Project Object model which can manage project build, reporting , and documentation from a central piece of info.
+As a fundamental unit of work in Maven, POM is an example file that contains info. Maven provides easy build process,
+ Maven plugins -> clean, compiler, deploy, failsafe, install, resources, site, surefre,veridier 
+
+http://stacktips.com/tutorials/java/spring/creating-spring-mvc-helloworld-using-maven-in-eclipse-tomcat (link for tutorial to )
+
+Spring Security provides authentication, authorization and other security features for enterprise applications. Spring security provides security for j2ee based applications.
+
+2 main areas for application securities:- authenticaion and authorization
+authenticaion : process of checking the user, who they claim to be. authorization : process of deciding whether user as authorty to perform action in applicaion.
+Spring security modules : core, web, remoting, config
+
+<filter><filter-name>springSecurityFilterChain</filter-name>
+<filter-class>org.springframework.web.filter.DelegatingFilterProxy</fiter-class></filter>
+
+we use suite to club similar tests.mock allows to mock methods n varibles but not private methods, constructors, native methods and static variables. so to mock them
+we use power mock class. 
+
+jvm is for java applications and applicationContext is  for web applications.
+
+types of beans:- 
+core java types: singleton and prototype. singleton creates only 1 instance in jvm. 
+
+camel is used for integration of distributed applications(applictaions in which components are distributed among various devices)
+
+camel's message model is 2 type:- 1. message - has headers, attachments and body. headers have a unique corelational id.
+2. Exchange model - it has Message Exchange pattern(input only or input output), Exceptions, message in(message sent), message out(response returned),exchange id,properties
+endpoint is to which or which r connecting. The common code is kept outside camel context.only 3 dsl(domain specific langauge) r supported by camel - camel, scala 
+and spring filters allow only specific messages across. matched code is sent and rest is discarded. 
+
+jms has 2 messaging models: topic and queue. queue is one to one msging. only 1 subsriber allowed.
+topic me publish krte h. broadcasting type. no persistence.
+
+in queue only 1 subscriber is there. after that msg is destroyed.but if v want to send to many people, we use multicast
+
+from("http://0.0.0.0:8081/getStars")
