@@ -1,0 +1,35 @@
+To merge and accept incoming changes
+git merge feature -Xtheirs
+To merge and accept current changes
+git merge feature -Xours
+
+This is for configuring vim mergetool
+git config merge.tool vimdiff
+git config merge.conflictstyle diff3
+git config mergetool.prompt false
+
+To merge in vim 
+:diffget RE
+RE for remote
+LO for local
+BA for base
+
+To save the changes that we dont want to commit
+stash is a LIFO structure
+git add .
+git stash
+git stash list //to see all the elements of stash
+git stash pop //to delete the 0th element of stash
+git stash --help
+git stash apply stash@{0}
+
+Stash only saves the changes after last commit in a seperate place
+
+git reflog //to see logs
+
+git revert commitnumber
+git checkout commitnumber //will checkout a commit. The head goes in detached state
+git checkout -b branchname commitnumber //checkout all the code of that commit to a new branch
+
+git tag v1.0 //tagging a state
+git show -l v1.0 //show the tagged state
